@@ -7,10 +7,12 @@ const Navbar = () => {
     <nav className="bg-white  fixed w-full z-20 top-0 start-0 border-b border-gray-200 shadow-md">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
-          to="#"
+          to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <span className="self-center text-2xl font-semibold whitespace-nowrap">
+          <img src="/public/logo.png" className="h-12"></img>
+          <span className="self-center text-2xl font-semibold whitespace-nowrap text-blue-800">
+           
             My Perfect PG
           </span>
         </Link>
@@ -59,7 +61,7 @@ const Navbar = () => {
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
             <li>
               <Link
-                to="#"
+                to="/"
                 className="block py-2 px-3 text-gray-900 rounded bg-gray-100"
                 aria-current="page"
               >
@@ -76,7 +78,15 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                to="#"
+                to="privacypolicy"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100"
+              >
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link
+                to=""
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100"
               >
                 Services
