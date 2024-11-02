@@ -11,7 +11,9 @@ const index = () => {
     <LandingPage></LandingPage>
     <PopularPGSection></PopularPGSection>
     <StudentSuccessSection></StudentSuccessSection>
+ 
     <AppDownloadSection></AppDownloadSection>
+
     <Footer></Footer>
     </>
   )

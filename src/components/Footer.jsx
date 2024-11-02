@@ -78,6 +78,7 @@ const Footer = () => {
                 width={40}
                 height={40}
                 className="rounded"
+                priority
               />
               <span className="ml-3 text-xl font-semibold">My Perfect PG</span>
             </div>
