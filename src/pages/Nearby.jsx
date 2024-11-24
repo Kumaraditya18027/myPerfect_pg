@@ -129,7 +129,7 @@ const PGListing = () => {
 
           {/* Footer Section */}
           <div className="mt-8 text-center text-gray-500">
-            <p>Can't find what you're looking for? <button className="text-blue-500 hover:underline">Contact Support</button></p>
+            <p>Can&apos;t find what you&apos;re looking for? <button className="text-blue-500 hover:underline">Contact Support</button></p>
           </div>
         </div>
       </div>

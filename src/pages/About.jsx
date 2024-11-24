@@ -54,7 +54,7 @@ const AboutUs = () => {
             About PG Finder
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We're revolutionizing the way people find their perfect paying guest accommodations, 
+            We&apos;re revolutionizing the way people find their perfect paying guest accommodations, 
             making it easier than ever to discover your next home away from home.
           </p>
         </div>
@@ -81,7 +81,7 @@ const AboutUs = () => {
               <h2 className="text-3xl font-bold mb-6 text-gray-800">Our Mission</h2>
               <p className="text-gray-600 leading-relaxed mb-6">
                 At PG Finder, we believe everyone deserves to find their perfect living space without 
-                the hassle. We're committed to bringing transparency, efficiency, and reliability to 
+                the hassle. We&apos;re committed to bringing transparency, efficiency, and reliability to 
                 the PG accommodation sector.
               </p>
               <p className="text-gray-600 leading-relaxed">
@@ -126,7 +126,7 @@ const AboutUs = () => {
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-10 text-center text-white">
           <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
           <p className="mb-8 text-lg">
-            Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            Have questions? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
           </p>
           <div className="flex justify-center gap-4">
             <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors">
