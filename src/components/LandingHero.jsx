@@ -39,8 +39,11 @@ const LandingPage = () => {
           <Link href="/" className="text-white hover:text-gray-200 transition">
             Home
           </Link>
-          <Link href="/" className="text-white hover:text-gray-200 transition">
+          <Link href="/About" className="text-white hover:text-gray-200 transition">
             About
+          </Link>
+          <Link href="/Login" className="text-white hover:text-gray-200 transition">
+            Login
           </Link>
         </div>
       </nav>
