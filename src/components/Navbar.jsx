@@ -1,8 +1,17 @@
-import React from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check for `localStorage` value after the component has mounted
+    if (localStorage.getItem("isLoggedIn") === "true") {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   return (
     <nav className="relative z-10 flex justify-between items-center p-4 md:p-6">
       <Link href="/" className="text-white text-2xl font-semibold">
@@ -20,12 +29,20 @@ const Navbar = () => {
         <Link href="/" className="text-white hover:text-gray-200 transition">
           Home
         </Link>
-        <Link href="/About" className="text-white hover:text-gray-200 transition">
+        <Link
+          href="/About"
+          className="text-white hover:text-gray-200 transition"
+        >
           About
         </Link>
-        <Link href="/Login" className="text-white hover:text-gray-200 transition">
-          Login
-        </Link>
+        {!isLoggedIn && (
+          <Link
+            href="/Login"
+            className="text-white hover:text-gray-200 transition"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </nav>
   );

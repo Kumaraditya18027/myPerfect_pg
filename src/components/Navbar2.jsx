@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
 // SVG Icons as components
 const MenuIcon = () => (
@@ -39,7 +40,23 @@ const CloseIcon = () => (
 );
 
 const Navbar = () => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check for `localStorage` value after the component has mounted
+    const loggedInStatus = localStorage.getItem("isLoggedIn") === "true";
+    setIsLoggedIn(loggedInStatus);
+  }, []);
+
+  const logout = () => {
+    if (localStorage.getItem("isLoggedIn") === "true") {
+      localStorage.setItem("isLoggedIn", false);
+      router.push("/");
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm shadow-lg">
@@ -68,16 +85,28 @@ const Navbar = () => {
             <NavLink href="/About">About Us</NavLink>
             <NavLink href="/Pg">Search</NavLink>
             <NavLink href="/Nearby">Nearby PGs</NavLink>
-            <NavLink href="/Summary">Dashboard</NavLink>
-            <Link
-              href="/"
-              className="px-4 py-2 rounded-full bg-blue-500 text-white font-medium 
+            {/* <NavLink href="/Summary">Dashboard</NavLink> */}
+            {isLoggedIn ? (
+              <button
+                onClick={logout}
+                className="px-4 py-2 rounded-full bg-blue-500 text-white font-medium 
                          transform transition-all duration-300 
                          hover:bg-blue-600 hover:scale-105 hover:shadow-lg
                          active:scale-95"
-            >
-              LogOut
-            </Link>
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                href="/Login"
+                className="px-4 py-2 rounded-full bg-blue-500 text-white font-medium 
+              transform transition-all duration-300 
+              hover:bg-blue-600 hover:scale-105 hover:shadow-lg
+              active:scale-95"
+              >
+                Login
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -95,11 +124,11 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         <div
           className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-            isOpen ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'
+            isOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <div className="pb-3 space-y-1">
-          <MobileNavLink href="/" onClick={() => setIsOpen(false)}>
+            <MobileNavLink href="/" onClick={() => setIsOpen(false)}>
               Home
             </MobileNavLink>
             <MobileNavLink href="/About" onClick={() => setIsOpen(false)}>
@@ -114,17 +143,16 @@ const Navbar = () => {
             {/* <MobileNavLink href="/about" onClick={() => setIsOpen(false)}>
               About
             </MobileNavLink> */}
-            <Link
-              href="/login"
-              onClick={() => setIsOpen(false)}
+            <button
+              onClick={logout}
               className="block w-full text-center px-4 py-2 mt-4 rounded-full 
                          bg-blue-500 text-white font-medium 
                          transform transition-all duration-300 
                          hover:bg-blue-600 hover:scale-105
                          active:scale-95"
             >
-              Login
-            </Link>
+              Logout
+            </button>
           </div>
         </div>
       </div>
