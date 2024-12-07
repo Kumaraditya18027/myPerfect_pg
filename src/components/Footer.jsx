@@ -26,12 +26,7 @@ const Footer = () => {
       { name: 'FAQs', href: '/' }
     ],
     cities: [
-      { name: 'Kolkata', href: '/' },
-      { name: 'Delhi', href: '/' },
-      { name: 'Mumbai', href: '/' },
-      { name: 'Bangalore', href: '/' },
-      { name: 'Pune', href: '/' },
-      { name: 'Hyderabad', href: '/' }
+      { name: 'Kolkata', href: '/' }
     ]
   };
 
