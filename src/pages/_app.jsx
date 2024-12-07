@@ -1,5 +1,6 @@
 
 import "../app/globals.css"; // Import your global CSS file
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   return (
