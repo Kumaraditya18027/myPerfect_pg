@@ -64,7 +64,7 @@ const AboutUs = () => {
     { label: "PGs Listed", value: "20+" },
     { label: "Happy Residents", value: "100+" },
     { label: "Cities", value: "10+" },
-    { label: "Years Experience", value: "5+" },
+    { label: "Months Experience", value: "5+" },
   ];
 
   return (
@@ -147,7 +147,7 @@ const AboutUs = () => {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-lg"
+                    className="w-36 h-36 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-lg"
                   />
                   <h3 className="text-xl font-bold text-gray-800 mb-2">
                     {member.name}
