@@ -42,7 +42,7 @@ const AboutUs = () => {
     {
       name: "Abhay Raj",
       role: "Co-Founder and CMO",
-      image: "Abhay.jpg",
+      image: "/Abhay.jpg",
       description: "",
     },
     {
