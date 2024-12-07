@@ -36,15 +36,28 @@ const AboutUs = () => {
     {
       name: "Aaquib Ahmad",
       role: "Founder & CEO",
-      image: "/api/placeholder/200/200",
+      image: "/images/team/aaqib.jpg",
       description: "",
     },
     {
-      name: "Manas Goyal",
-      role: "Operations Director",
-      image: "/api/placeholder/200/200",
+      name: "Abhay Raj",
+      role: "Co-Founder and CMO",
+      image: "/images/team/abhay.jpg",
       description: "",
     },
+    {
+      name: "Manash Goyal",
+      role: "Co-Founder and CFO",
+      image: "/images/team/Manash-Goyal.jpg",
+      description: "",
+    },
+    {
+      name: "Harshankit Raj",
+      role: "Co-Founder and CTO",
+      image: "/images/team/harshankit.jpg",
+      description: "",
+    },
+   
   ];
 
   const stats = [
@@ -112,7 +125,7 @@ const AboutUs = () => {
               </div>
               <div className="relative group">
                 <img
-                  src="/api/placeholder/600/400"
+                  src="/images/team/mission.jpg"
                   alt="Our Mission"
                   className="rounded-2xl shadow-lg transform group-hover:scale-105 transition-transform duration-300"
                 />
