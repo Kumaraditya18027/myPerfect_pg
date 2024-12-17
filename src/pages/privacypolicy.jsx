@@ -101,7 +101,7 @@ export default function PrivacyPolicy() {
               <section>
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Contact Us</h2>
                 <p className="text-gray-600 mb-4">
-                  If you have any questions about our Privacy Policy or how we handle your data, please don't hesitate to reach out.
+                  If you have any questions about our Privacy Policy or how we handle your data, please don&apos;t hesitate to reach out.
                 </p>
                 <a 
                   href="mailto:harshankit2410@gmail.com" 
