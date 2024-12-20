@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar2";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const SearchIcon = () => (
   <svg
@@ -44,6 +45,8 @@ const PGShowcase = () => {
     roomType: "all",
     gender: "all",
   });
+  const [searchPg, setSearchPg] = useState('')
+  const [sortPg, setSortPg] = useState('recommended')
 
   useEffect(() => {
     if (localStorage.getItem("isLoggedIn") === "false") {
@@ -178,6 +181,46 @@ const PGShowcase = () => {
     ],
   };
 
+  const filteredPg = useMemo(() => {
+    return pgs.filter((pg) => {
+      const searchLower = searchPg.toLowerCase();
+      const priceCondition = 
+      selectedFilters.priceRange === "all" ||
+      (selectedFilters.priceRange === "under5k" && pg.price < 5000) ||
+      (selectedFilters.priceRange === "5k-10k" && pg.price >= 5000 && pg.price <= 10000) ||
+      (selectedFilters.priceRange === "above10k" && pg.price > 10000);
+
+      const roomCondition = 
+      selectedFilters.roomType === "all" ||
+      pg.roomTypes.some((room) => room.toLowerCase() === selectedFilters.roomType);
+      
+      const genderCondition =
+      selectedFilters.gender === "all" ||
+      pg.gender.toLowerCase() === selectedFilters.gender;
+
+      return (
+        (pg.name.toLowerCase().includes(searchLower) ||
+        pg.location.toLowerCase().includes(searchLower) ||
+        pg.amenities.some((amenity) => amenity.toLowerCase().includes(searchLower))) && 
+        priceCondition &&
+        roomCondition &&
+        genderCondition
+      )
+    })
+  },[pgs, searchPg, selectedFilters])
+
+  const sortedPg = useMemo(() => {
+    const sorted = [...filteredPg];
+    if (sortPg === "priceLowToHigh") {
+      sorted.sort((a, b) => a.price - b.price);
+    } else if (sortPg === "priceHighToLow") {
+      sorted.sort((a, b) => b.price - a.price);
+    } else if (sortPg === "ratingHighToLow") {
+      sorted.sort((a, b) => b.rating - a.rating);
+    }
+    return sorted;
+  },[filteredPg, sortPg])
+
   return (
     <>
       <div className="mb-16">
@@ -195,6 +238,8 @@ const PGShowcase = () => {
                 </div>
                 <input
                   type="text"
+                  value={searchPg}
+                  onChange={(e) => setSearchPg(e.target.value)}
                   placeholder="Search by location, PG name..."
                   className="w-full pl-12 pr-4 py-3 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 />
@@ -262,28 +307,33 @@ const PGShowcase = () => {
           {/* Results Info */}
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold text-gray-800">
-              {pgs.length} PGs Available
+              {filteredPg.length} PGs Available
             </h2>
-            <select className="px-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
-              <option>Sort by Recommended</option>
-              <option>Price: Low to High</option>
-              <option>Price: High to Low</option>
-              <option>Rating: High to Low</option>
+            <select 
+            value={sortPg}
+            onChange={(e) => setSortPg(e.target.value)}
+            className="px-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+              <option value="recommended">Sort by Recommended</option>
+              <option value="priceLowToHigh">Price: Low to High</option>
+              <option value="priceHighToLow">Price: High to Low</option>
+              <option value="ratingHighToLow">Rating: High to Low</option>
             </select>
           </div>
 
           {/* PG Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pgs.map((pg) => (
+            {sortedPg.map((pg) => (
               <div
                 key={pg.id}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 {/* Image */}
                 <div className="relative group">
-                  <img
+                  <Image
                     src={pg.images[0]}
                     alt={pg.name}
+                    width={500}
+                    height={300}
                     className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-medium text-blue-600">
