@@ -47,12 +47,14 @@ const LandingPage = () => {
               className="w-full px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-white placeholder-white/70 border border-white/30 focus:outline-none focus:border-white/50"
             />
           </div>
-          <button
+        <Link href="/Pg"><button
             className="mt-2 sm:mt-0 px-8 py-2 bg-white rounded-full text-blue-600 font-medium hover:bg-blue-50 transition-colors"
             aria-label="Search"
+  
           >
             Search
           </button>
+          </Link>
         </div>
       </main>
     </div>
